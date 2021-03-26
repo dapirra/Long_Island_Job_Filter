@@ -6,6 +6,7 @@
 // @match        http*://www.indeed.com/jobs?*
 // @match        http*://www.ziprecruiter.com/candidate/search?*
 // @match        http*://www.ziprecruiter.com/candidate/suggested-jobs
+// @match        http*://www.monster.com/jobs/search?*
 // @require      https://cdnjs.cloudflare.com/ajax/libs/arrive/2.4.1/arrive.min.js
 // ==/UserScript==
 
@@ -223,6 +224,18 @@ const ERROR_RED = 'rgb(150, 0, 0)';
 				var matches = location.match(/([^,]+)/) ?? [];
 				var town = matches[1];
 				if (!LONG_ISLAND_TOWNS.has(town)) {
+					this.style.backgroundColor = ERROR_RED;
+				}
+			});
+			break;
+		case 'www.monster.com':
+			LIJF_Log('Monster detected');
+			document.arrive('.results-card', {existing: true}, function() {
+				var location = this.querySelector('.card-job-location').textContent;
+				var matches = location.match(/([^,]+), ([A-Z]{2})/) ?? [];
+				var town = matches[1];
+				var state = matches[2];
+				if (state !== 'NY' || !LONG_ISLAND_TOWNS.has(town)) {
 					this.style.backgroundColor = ERROR_RED;
 				}
 			});

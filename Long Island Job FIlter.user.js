@@ -4,6 +4,8 @@
 // @version      0.1
 // @description  Filters out jobs that are not on Long Island from the search results of popular job search engines.
 // @match        http*://www.indeed.com/jobs?*
+// @match        http*://www.ziprecruiter.com/candidate/search?*
+// @match        http*://www.ziprecruiter.com/candidate/suggested-jobs
 // @require      https://cdnjs.cloudflare.com/ajax/libs/arrive/2.4.1/arrive.min.js
 // ==/UserScript==
 
@@ -207,6 +209,20 @@ const ERROR_RED = 'rgb(150, 0, 0)';
 				var state = matches[2];
 				var zip = matches [3];
 				if (state !== 'NY' || !LONG_ISLAND_TOWNS.has(town)) {
+					this.style.backgroundColor = ERROR_RED;
+				}
+			});
+			break;
+		case 'www.ziprecruiter.com':
+			LIJF_Log('ZipRecruiter detected');
+			document.arrive('.job_content', {existing: true}, function() {
+				var location = this.querySelector(
+						document.URL.endsWith('suggested-jobs') ?
+							'.job_location' : '.location'
+					).textContent.trim();
+				var matches = location.match(/([^,]+)/) ?? [];
+				var town = matches[1];
+				if (!LONG_ISLAND_TOWNS.has(town)) {
 					this.style.backgroundColor = ERROR_RED;
 				}
 			});

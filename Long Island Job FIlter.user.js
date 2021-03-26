@@ -190,11 +190,26 @@ const LONG_ISLAND_TOWNS = new Set([
 	"Long Island"
 ]);
 
+// const ERROR_RED = '#f44336';
+// const ERROR_RED = '#a6001a';
+// const ERROR_OUTLINE = 'solid red 3px';
+const ERROR_RED = 'rgb(150, 0, 0)';
+
 (function() {
 	LIJF_Log('Long Island Job Filter is running');
-	switch (document.host) {
+	switch (location.host) {
 		case 'www.indeed.com':
 			LIJF_Log('Indeed detected');
+			document.arrive('.result', {existing: true}, function() {
+				var location = this.querySelector('.location').textContent;
+				var matches = location.match(/([^,]+), ([A-Z]{2})(?: ([0-9]{5}))?/) ?? [];
+				var town = matches[1];
+				var state = matches[2];
+				var zip = matches [3];
+				if (state !== 'NY' || !LONG_ISLAND_TOWNS.has(town)) {
+					this.style.backgroundColor = ERROR_RED;
+				}
+			});
 			break;
 	}
 })();

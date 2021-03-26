@@ -15,10 +15,18 @@
 */
 
 (function() {
-	console.log('Long Island Job Filter is running');
+	LIJF_Log('Long Island Job Filter is running');
 	switch (document.host) {
 		case 'www.indeed.com':
-			console.log('Indeed detected');
+			LIJF_Log('Indeed detected');
 			break;
 	}
 })();
+
+function LIJF_Log(text) {
+	console.log('%cLIJF: ' + text , 'color: green; background: black; padding: 5px');
+}
+
+function LIJF_Error(text) {
+	console.log('%cLIJF Error: ' + text , 'color: red; background: black; padding: 5px');
+}

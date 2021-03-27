@@ -194,10 +194,8 @@ const LONG_ISLAND_TOWNS = new Set([
 	"Long Island"
 ]);
 
-// const ERROR_RED = '#f44336';
-// const ERROR_RED = '#a6001a';
-// const ERROR_OUTLINE = 'solid red 3px';
-const ERROR_RED = 'rgb(150, 0, 0)';
+const ERROR_BG_COLOR = '#ff0000';
+const ERROR_TEXT_COLOR = '#000';
 
 (function() {
 	LIJF_Log('Long Island Job Filter is running');
@@ -211,7 +209,10 @@ const ERROR_RED = 'rgb(150, 0, 0)';
 				var state = matches[2];
 				var zip = matches [3];
 				if (state !== 'NY' || !LONG_ISLAND_TOWNS.has(town)) {
-					this.style.backgroundColor = ERROR_RED;
+					this.style.backgroundColor = ERROR_BG_COLOR;
+					this.querySelectorAll('*').forEach(function (ele) {
+						ele.style.color = ERROR_TEXT_COLOR;
+					});
 				}
 			});
 			break;
@@ -225,7 +226,10 @@ const ERROR_RED = 'rgb(150, 0, 0)';
 				var matches = location.match(/([^,]+)/) ?? [];
 				var town = matches[1];
 				if (!LONG_ISLAND_TOWNS.has(town)) {
-					this.style.backgroundColor = ERROR_RED;
+					this.style.backgroundColor = ERROR_BG_COLOR;
+					this.querySelectorAll('*').forEach(function (ele) {
+						ele.style.color = ERROR_TEXT_COLOR;
+					});
 				}
 			});
 			break;
@@ -237,7 +241,10 @@ const ERROR_RED = 'rgb(150, 0, 0)';
 				var town = matches[1];
 				var state = matches[2];
 				if (state !== 'NY' || !LONG_ISLAND_TOWNS.has(town)) {
-					this.style.backgroundColor = ERROR_RED;
+					this.style.backgroundColor = ERROR_BG_COLOR;
+					this.querySelectorAll('*').forEach(function (ele) {
+						ele.style.color = ERROR_TEXT_COLOR;
+					});
 				}
 			});
 			break;

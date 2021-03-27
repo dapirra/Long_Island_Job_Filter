@@ -251,8 +251,9 @@ const ERROR_TEXT_COLOR = '#000';
 			break;
 		case 'www.glassdoor.com':
 			LIJF_Log('Glassdoor detected');
+			var reactData = getReactData(document.querySelector('.react-job-listing'), '__reactProps$');
 			document.arrive('.react-job-listing', {existing: true}, function() {
-				var location = this.querySelector('.e1rrn5ka0').textContent;
+				var location = this[reactData]['data-job-loc'];
 				var matches = location.match(/([^,]+), ([A-Z]{2})/) ?? [];
 				var town = matches[1];
 				var state = matches[2];
@@ -266,6 +267,15 @@ const ERROR_TEXT_COLOR = '#000';
 			break;
 	}
 })();
+
+// Get a specific attribute that's needed to retrieve certain values from react
+function getReactData(element, startsWith) {
+	for (var i in element) {
+		if (i.startsWith(startsWith)) {
+			return i;
+		}
+	}
+}
 
 function LIJF_Log(text) {
 	console.log('%cLIJF: ' + text , 'color: green; background: black; padding: 5px');

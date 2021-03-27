@@ -102,6 +102,7 @@ const LONG_ISLAND_TOWNS = new Set([
 	"Saint James",
 	"Sayville",
 	"Selden",
+	"Setauket",
 	"Shelter Island",
 	"Shelter Island Heights",
 	"Shirley",

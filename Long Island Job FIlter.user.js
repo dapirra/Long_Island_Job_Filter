@@ -211,7 +211,7 @@ const ERROR_TEXT_COLOR = '#000';
 				if (state !== 'NY' || !LONG_ISLAND_TOWNS.has(town)) {
 					this.style.backgroundColor = ERROR_BG_COLOR;
 					this.querySelectorAll('*').forEach(function (ele) {
-						ele.style.color = ERROR_TEXT_COLOR;
+						ele.style.setProperty('color', ERROR_TEXT_COLOR, 'important');
 					});
 				}
 			});
@@ -228,7 +228,7 @@ const ERROR_TEXT_COLOR = '#000';
 				if (!LONG_ISLAND_TOWNS.has(town)) {
 					this.style.backgroundColor = ERROR_BG_COLOR;
 					this.querySelectorAll('*').forEach(function (ele) {
-						ele.style.color = ERROR_TEXT_COLOR;
+						ele.style.setProperty('color', ERROR_TEXT_COLOR, 'important');
 					});
 				}
 			});
@@ -243,7 +243,7 @@ const ERROR_TEXT_COLOR = '#000';
 				if (state !== 'NY' || !LONG_ISLAND_TOWNS.has(town)) {
 					this.style.backgroundColor = ERROR_BG_COLOR;
 					this.querySelectorAll('*').forEach(function (ele) {
-						ele.style.color = ERROR_TEXT_COLOR;
+						ele.style.setProperty('color', ERROR_TEXT_COLOR, 'important');
 					});
 				}
 			});

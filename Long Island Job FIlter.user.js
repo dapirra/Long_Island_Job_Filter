@@ -7,6 +7,7 @@
 // @match        http*://www.ziprecruiter.com/candidate/search?*
 // @match        http*://www.ziprecruiter.com/candidate/suggested-jobs
 // @match        http*://www.monster.com/jobs/search?*
+// @match        http*://www.glassdoor.com/Job/*
 // @require      https://cdnjs.cloudflare.com/ajax/libs/arrive/2.4.1/arrive.min.js
 // ==/UserScript==
 
@@ -237,6 +238,21 @@ const ERROR_TEXT_COLOR = '#000';
 			LIJF_Log('Monster detected');
 			document.arrive('.results-card', {existing: true}, function() {
 				var location = this.querySelector('.card-job-location').textContent;
+				var matches = location.match(/([^,]+), ([A-Z]{2})/) ?? [];
+				var town = matches[1];
+				var state = matches[2];
+				if (state !== 'NY' || !LONG_ISLAND_TOWNS.has(town)) {
+					this.style.backgroundColor = ERROR_BG_COLOR;
+					this.querySelectorAll('*').forEach(function (ele) {
+						ele.style.setProperty('color', ERROR_TEXT_COLOR, 'important');
+					});
+				}
+			});
+			break;
+		case 'www.glassdoor.com':
+			LIJF_Log('Glassdoor detected');
+			document.arrive('.react-job-listing', {existing: true}, function() {
+				var location = this.querySelector('.e1rrn5ka0').textContent;
 				var matches = location.match(/([^,]+), ([A-Z]{2})/) ?? [];
 				var town = matches[1];
 				var state = matches[2];

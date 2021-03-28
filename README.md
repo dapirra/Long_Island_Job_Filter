@@ -25,4 +25,4 @@ Any job results that are not located in Suffolk or Nassau County are marked in r
 ### Things to watch out for:
 
 - Any future visual update to the layout of the supported websites could break the script for said site.
-- There are 2 towns of Woodbury in New York, one in Nassau County and one in Orange county. This script can't tell one from the other and will leave any job located in Woodbury unmarked. It's up to the user to figure out which Woodbury.
+- There are 2 towns of Woodbury in New York, one in [Nassau County](https://www.google.com/maps/place/Woodbury,+Nassau+County,+NY) and one in [Orange County](https://www.google.com/maps/place/Woodbury,+Orange+County,+NY). This script can't tell one from the other and will leave any job located in Woodbury unmarked. It's up to the user to figure out which Woodbury.

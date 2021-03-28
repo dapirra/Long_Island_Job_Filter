@@ -3,7 +3,7 @@
 // @namespace    https://dapirra.github.io/
 // @version      0.1
 // @description  Filters out jobs that are not on Long Island from the search results of popular job search engines.
-// @downloadURL  https://github.com/dapirra/Long_Island_Job_Filter/raw/master/Long%20Island%20Job%20FIlter.user.js
+// @downloadURL  https://github.com/dapirra/Long_Island_Job_Filter/raw/master/LIJF.user.js
 // @match        http*://www.indeed.com/jobs?*
 // @match        http*://www.ziprecruiter.com/candidate/search?*
 // @match        http*://www.ziprecruiter.com/candidate/suggested-jobs
